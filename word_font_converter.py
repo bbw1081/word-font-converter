@@ -6,34 +6,20 @@ easy-to-read font and a standard font. Works on old .doc files and
 modern .docx files alike, because it drives Microsoft Word directly
 (via COM) rather than reading the file format itself.
 
-REQUIREMENTS
-    - Microsoft Word must be installed on this machine.
-    - pip install pywin32
+Copyright (C) 2026  Richard Wilkinson
 
-RUNNING IT
-    python word_font_converter.py
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-BUILDING A STANDALONE .EXE (so Python isn't needed on his machines)
-    pip install pyinstaller
-    pyinstaller --onefile --windowed --name WordFontConverter word_font_converter.py
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    The .exe will appear in a new "dist" folder.
-
-    IMPORTANT: PyInstaller cannot cross-compile. Build the .exe ON
-    each target machine (or a machine running the same Windows
-    version), not on your own computer.
-
-      - Windows 10 machine: install current Python (3.11+), pip
-        install pywin32 and pyinstaller, then build there.
-      - Windows 7 machine: this is the tricky one. Modern Python
-        (3.9+) does NOT support Windows 7. Install Python 3.8.10
-        (the last version that supports Win7), then pip install
-        pywin32==306 and pyinstaller==5.13.2 (last versions with
-        solid Win7 support), and build there.
-
-    Either way, "font_settings.json" will be created next to the
-    .exe the first time it runs, and his large/standard font choices
-    will persist between sessions automatically.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import json
@@ -41,6 +27,11 @@ import os
 import sys
 import tkinter as tk
 from tkinter import filedialog, messagebox, colorchooser, ttk
+
+print("<program>  Copyright (C) <year>  <name of author> \n" \
+"This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'. \n" \
+"This is free software, and you are welcome to redistribute it\n" \
+"under certain conditions; type `show c' for details.")
 
 try:
     import win32com.client as win32
